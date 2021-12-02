@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
+using LaptopWorldStore.Models;
+using System.Data.Entity.Validation;
+
+namespace LaptopWorldStore.Controllers
+{
+    public class ShoppingBagController : Controller
+    {
+        private LaptopWorld db = new LaptopWorld();
+
+        // GET: ShoppingBag
+        public ActionResult Index()
+        {
+            var sellbills = db.sellbills.Include(s => s.customer);
+            return View();
+        }
+
+        public void CheckCustomerInfo(customer _ct)
+        {
+            customer ct = db.customers.Find(_ct.phonenumber);
+            if(ct == null)
+            {
+
+                db.customers.Add(_ct);
+                db.SaveChanges();
+            }
+        }
+       public string Create( string phonenumber, string shippingtype,decimal totalprice, sellbilldetail[] list)
+        { 
+                sellbill sb = new sellbill();               
+                sb.billDate = DateTime.Now;
+                sb.sellbill_id = Guid.NewGuid();
+                sb.customer = db.customers.Find(phonenumber);
+                sb.customerphonenumber = phonenumber;
+                sb.shippingtype = shippingtype;
+                sb.total_paid = totalprice;
+                sb.flag = true;
+                foreach (var item in list)
+                {
+                    item.product = db.products.Find(item.product_id);
+                    item.sellbill_id = sb.sellbill_id;
+                    item.sellbilldetail_id = Guid.NewGuid();
+                    sb.sellbilldetails.Add(item);
+                }
+                db.sellbills.Add(sb);
+
+                db.SaveChanges();
+
+            
+             return "Đặt hàng thành công";
+           
+        }
+       
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

@@ -1,0 +1,31 @@
+﻿@model IPagedList<LaptopWorldStore.Models._new>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList;
+@using PagedList.Mvc;
+<link href="~/Content/css/news-page.css" rel="stylesheet" />
+<div>
+<div class="col-10 marginauto flex wrap">
+    @foreach (var item in Model)
+    {
+    <div class="col-6 new-box">
+        <a href='@Url.Action("Details", "_new", new { id = item.New_id })'>
+            <img src="@Url.Content("~/Content/images/news/" + item.picture)"  class="col-12" />
+        </a>
+        <small>Ngày tạo: @item.Date_created</small>
+        <h4 class="productname"> @Html.ActionLink(@item.new_name, "Details", "_new", new { id = item.New_id }, null)</h4>
+    </div>
+    }
+</div>
+
+<div class="col-2 marginauto">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "_news", new { page, searchString = Request.QueryString["searchString"] }),
+                                                                               new PagedListRenderOptions
+                                                                                    {
+                                                                                  ContainerDivClasses = new string[] { "page-item" }
+                                                                               })
+</div>
+</div>    

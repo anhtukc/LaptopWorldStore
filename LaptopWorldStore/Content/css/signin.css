@@ -1,0 +1,21 @@
+.main{
+    min-height: 50rem;
+    padding-top: 5rem;
+}
+.singin-form {
+    border: 1px solid gray;
+    padding: 4rem;
+    background-color: white;
+}
+.signinform:hover{
+    border: 2px solid rgb(15, 160, 160);
+    z-index: 13;
+}
+input{
+    width: 100%;
+    min-height: 5rem;
+    margin-bottom: 3rem;
+    border-radius: 0.5rem;
+    border: 1px solid gray;
+    padding: 0 2rem;
+}

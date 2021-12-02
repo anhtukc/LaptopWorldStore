@@ -1,0 +1,41 @@
+﻿@model IPagedList<LaptopWorldStore.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList;
+@using PagedList.Mvc;
+
+
+
+<div class="main-content">
+    <div class="flexrow sorter">
+        <h4 class="tittle">Sắp xếp: </h4>
+        <button class="sortbutton">Giá giảm dần</button>
+        <button class="sortbutton">Giá tăng dần</button>
+    </div>
+    <div id="productshows" class="col-12 flexrow wrap ">
+        @foreach (var item in Model)
+        {
+            <section class="productbox col-2 col-s-6 ">
+                <a href='@Url.Action("Details", "ssds", new { id = item.product_id })'>
+                    <img src="@Url.Content("~/Content/images/product/" + item.picture)" height="120" class="col-12" />
+                </a>
+                <small>ID: @item.product_id</small>
+                <h4 class="productname"> @Html.ActionLink(@item.product_name, "Details", "ssds", new { id = item.product_id }, null)</h4>
+                <p>Giá: <span class="productprice">@string.Format("{0: ###,###,###,000}", @item.price) đ</span></p>
+            </section>
+
+
+        }
+    </div>
+    <div class="col-2 marginauto">
+        @Html.PagedListPager(Model, page => Url.Action("Index", "ssds", new { page }),
+                                                                                 new PagedListRenderOptions
+                                                                                      {
+                                                                                    ContainerDivClasses = new string[] { "page-item" }
+                                                                                 })
+    </div>
+</div>
+<link href="~/Content/css/productpage.css" rel="stylesheet" />

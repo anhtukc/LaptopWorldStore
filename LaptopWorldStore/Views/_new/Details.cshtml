@@ -1,0 +1,20 @@
+﻿@model LaptopWorldStore.Models._new
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-10 marginauto">
+    <h1>@Model.new_name</h1>
+    <h4><small>Ngày tạo: @Model.Date_created</small></h4>
+    <img src="~/Content/images/news/@Model.picture" class="col-12"/>
+    <div>
+        @{
+
+            HtmlString msg = new HtmlString(Model.Content);
+             @msg  
+        }
+
+    </div>
+</div>

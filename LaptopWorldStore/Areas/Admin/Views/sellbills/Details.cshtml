@@ -1,0 +1,55 @@
+﻿@model LaptopWorldStore.Models.sellbill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/css/AdminBill.css" rel="stylesheet" />
+<div class="page-content container print" ng-controller="SellBills" ng-init="GetDetail('@Model.sellbill_id')">
+    <div class="page-header text-blue-d2">
+        <h1 class="page-title text-secondary-d1">
+            Hóa đơn
+            <small class="page-info">
+                <i class="fa fa-angle-double-right text-80"></i>
+                ID: #111-222
+            </small>
+        </h1>
+
+        <div class="page-tools">
+            <div class="action-buttons">
+                <a class="btn bg-white btn-light mx-1px text-95" href="#" data-title="Print"  onclick="window.print()">
+                    <i class="mr-1 fa fa-print text-primary-m1 text-120 w-2"></i>
+                    Print
+                </a>
+                <a class="btn bg-white btn-light mx-1px text-95" href="#" data-title="PDF">
+                    <i class="mr-1 fa fa-file-pdf-o text-danger-m1 text-120 w-2"></i>
+                    Export
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Giá bán</th>
+                <th scope="col">Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in Details track by $index">
+            <tr>
+                <th scope="row">{{item.product_name}}</th>
+                <td>{{item.product_quantity}}</td>
+                <td>{{item.product_price}}</td>
+                <td>{{item.product_grand_paid}}</td>
+            </tr>
+          
+        </tbody>
+    </table>
+</div>
+<script src="~/Content/js/AdminSellbillDetails.js"></script>
+

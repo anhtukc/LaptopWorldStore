@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/admin.css")" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Content/js/app.js"></script>
+    <script src="~/Content/js/CrudService.js"></script>
+</head>
+<body ng-app="app">
+    <nav class="navbar navbar-light bg-light justify-content-between col-lg-12">
+        <a class="navbar-brand col-lg-2">
+            <img src="~/Content/images/logo.png" width="150" />
+        </a>
+        <div class="user-container">
+            <div class="user-place col-lg-10">
+                <div class="dropdown">
+                    <button class="btn btn-primary-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Trần Tú
+                        <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div>
+                            <a class="dropdown-item" href="#">Thay mật khẩu</a>
+                        </div>
+                        <div>
+                            <a class="dropdown-item" href="@Url.Action("Singout", "products")">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="wrapper ">
+        <div class="sidebar col-lg-2">
+            <div class="sidebar-wrapper">
+                <ul class="navbar-customer">
+                    <li class="">
+                        <a href="@Url.Action("index", "products")">
+                            <span>Sản phẩm</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "categories")">
+                            <span>Loại sản phẩm</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("index", "news")">
+                            <span>Tin tức</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "providers")">
+                            <span>Nhà cung cấp</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "employees")">
+                            <span>Nhân viên</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "customers")">
+                            <span>Khách hàng </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "receiptbills")">
+                            <span>Hóa đơn nhậps</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "sellbills")">
+                            <span>Hóa đơn bán</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel col-lg-10">
+            <div class="content-place col-lg-12">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+<script src="https://kit.fontawesome.com/73ebdd764c.js" crossorigin="anonymous"></script>
+</html>

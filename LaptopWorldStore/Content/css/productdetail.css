@@ -1,0 +1,58 @@
+  tr td:first-child{
+        text-align: right;
+        padding-right: 0.4rem;
+    }
+
+
+.main-detail {
+    display: flex;
+    margin-top: 3rem;
+    border-bottom: 1px solid gray;
+}
+
+    .buybuttonstyle{
+        padding: 1rem;
+        background-color: rgb(19, 134, 201);
+        color: white;
+        font-size: 2rem;
+        outline: none;
+        border: 1px solid transparent;
+        border-radius: 1rem;
+    }
+    
+    .outofstock{
+        background-color: aliceblue;
+        color: gray;
+    }
+    .price{
+        color: red;
+        font-size: 2rem;
+    }
+
+    .detailproduct{
+        padding-left: 6rem;
+        padding-top: 1rem;
+    }
+
+    .productname{
+        font-weight: 500;
+        margin-bottom: 0.1rem;
+    }
+
+    .relative{
+        position: relative;
+    }
+
+    @media screen and (max-width:768px){
+        .productname{
+            position: relative;
+            left: 0;
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+        }
+        .detailproduct{
+            padding: 0;
+        }
+    }

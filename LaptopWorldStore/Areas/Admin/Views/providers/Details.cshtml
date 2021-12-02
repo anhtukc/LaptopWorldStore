@@ -1,0 +1,52 @@
+﻿@model LaptopWorldStore.Models.provider
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="page-title">Nhà cung cấp</h4>
+
+<div class="form-edit">
+    <div>
+        
+        <dl class="dl-horizontal">
+                            <dt>
+                @Html.DisplayNameFor(model => model.provider_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.provider_name)
+            </dd>
+
+                    <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+
+                    <dt>
+                @Html.DisplayNameFor(model => model.phonenumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.phonenumber)
+            </dd>
+
+                    <dt>
+                @Html.DisplayNameFor(model => model.flag)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.flag)
+            </dd>
+
+            </dl>
+    </div>
+    <p style="margin-left: 3rem">
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.provider_id }, new { @class = "btn btn-primary" }) 
+        @Html.ActionLink("Quay lại", "Index", "", new { @class = "btn btn-default" })
+        </p>
+</div>

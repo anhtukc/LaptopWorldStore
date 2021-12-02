@@ -1,0 +1,44 @@
+html{
+    font-size: 10px;
+}
+address{
+    display: inline-block;
+    font-style: normal;
+
+}
+
+footer{
+    background-color: rgb(10, 45, 66);
+    color: white;
+    height: auto;
+    padding-top: 0.5rem;
+    width: 100%;
+    margin-top: 5rem;
+}
+footer a{
+    color:white;
+}
+.policy, .infostore, .socialmedia{
+    margin-left: 10%;
+    line-height: 1.5;
+}
+
+.copyright{
+    color: rgb(58, 114, 148);
+    font-size: 1.4rem;
+    text-align: center;
+    padding-top: 2rem;
+}
+.mediaicon{
+    margin-right: 1rem;
+}
+
+@media  screen and (max-width:768px) {
+    .allinfo{
+        display: flex;
+        flex-direction: column;
+    }
+    .footer{
+        height: 50rem;
+    }
+}

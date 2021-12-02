@@ -1,0 +1,50 @@
+﻿@model LaptopWorldStore.Models.ssd
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/productdetail.css" rel="stylesheet" />
+<div class="col-12 marginauto" ng-controller="productcontroller">
+    <section>
+        <section class="main-detail col-12 col-s-12 marginauto">
+            <div class="col-5 col-s-12  relative">
+
+                <img src="@Url.Content("~/Content/images/product/" + @Model.product.picture)" class="col-12" />
+            </div>
+
+            <div class="col-s-9 detailproduct">
+                <h2 class="productname" id="name">@Model.product.product_name</h2>
+                <small>id:<span id="id">@Model.product_id</span></small>
+                <table>
+                    <tr>
+                        <td>Dung lượng:  </td>
+                        <td id="size"> @Model.size GB</td>
+                    </tr>
+                    <tr>
+                        <td>Tốc độ ghi:  </td>
+                        <td id="">@Model.write_speed  MHz</td>
+                    </tr>
+                </table>
+                <tr>
+                    <td>Tốc độ đọc:  </td>
+                    <td id="">@Model.read_speed MHz</td>
+                </tr>
+                <tr>
+                    <td>Kết nối  </td>
+                    <td id="">@Model.connector MHz</td>
+                </tr>
+                <p>Giá: <span class="price" id="sellprice">@string.Format("{0: ###,###,###,000}", @Model.product.price) đ</span></p>
+                <button id="buybutton" class="buybuttonstyle">Thêm vào giỏ hàng</button>
+            </div>
+        </section>
+        <section class="col-8 marginauto">
+            <h3>Đánh giá sản phẩm</h3>
+            <article>
+                @Model.product.decription
+
+            </article>
+        </section>
+    </section>
+</div>
+

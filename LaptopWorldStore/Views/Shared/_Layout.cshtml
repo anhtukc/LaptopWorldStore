@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css/default")
+    <script src="~/Content/js/shoppingbag.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Content/js/app.js"></script>
+    <script src="~/Content/js/CrudService.js"></script>
+</head>
+<body  ng-app="app">
+    <div class="header" id="header">
+        <nav class="flexrow navbar col-12">
+            <i id="openmenubutton" class="fa fa-bars col-s-2"></i>
+            <a href="@Url.Action("Index", "home")"> <img class="logo col-2 col-s-3" id="logo" src="~/Content/images/logo.png" " alt=""></a>
+
+            <div id="hiddenmenu" class="hiddenmenuwidth flexrow mobile col-s-12">
+                <i id="closemenubutton" class="fa fa-close w3-xxlarge "></i>
+                <div class="hiddennav laptop navitem hidemobile">
+                  
+                        <a href="@Url.Action("Index", "laptops")" class="navlink">
+                            <span>laptop</span>
+                        </a>
+                        <div class="navactive"></div>
+                  
+                </div>
+
+
+                <div class="hiddennav navitem hidemobile" onmouseover="listfocus()" onmouseout="listleave()">
+                    <a class="navlink">
+                        <span>Linh kiện</span>             
+                    </a>
+                    <div class="navlist col-1 cglist">
+                        <div class="flexcolumn wrap ">
+                            <div class="borderwrap">
+                                <p>
+                                    <a href="@Url.Action("Index", "rams")">
+                                        <span>Ram</span>
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="borderwrap">
+                                <p>
+                                    <a href="@Url.Action("Index", "ssds")">
+                                        <span>SSD</span>
+                                    </a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div><a href="" class="hidelaptop navlink">Laptop</a></div>
+                <div><a href="" class="hidelaptop navlink">Linh kiện</a></div>
+                <div><a href="" class="hidelaptop navlink">Phụ kiện</a></div>
+                <div><a href="" class="hidelaptop navlink">Tin tức</a></div>
+                <div><a class="hidelaptop navlink" id="" href="singinpage.html">Đăng nhập</a></div>
+            </div>
+
+            <form action="" id="searchinputandbutton" class="searchform nav-item   col-s-12">
+                <input type="search nav-item" name="" id="">
+                <button class="submitbtn" type="submit">
+                    <img src="/Content/images/searchicon.png" />
+                </button>
+            </form>
+
+            <i id="closesearchbutton" class="fa fa-close w3-xlarge xsearch"></i>
+
+            <div class="relative">
+                <i id="opensearchbutton" class="fa fa-search w3-xlarge"></i>
+                <a href="@Url.Action("Index", "ShoppingBag")">
+                    <button class="shoppingbag nav-item">             
+                        <img src="~/Content/images/shopingbag.jpg" />
+                    </button>
+                </a>
+                <span id="quatityshoppingbag" class="quatityinshopingbag"></span>
+            </div>
+
+            <div class=" navitem hidemobile">
+                <a class="navlink" href="@Url.Action("Index", "_new")">
+                    <span>Tin tức</span>
+                    <div class="navactive"></div>
+                </a>
+            </div>
+
+            <div class=" navitem hidemobile">
+                <a href="@Url.Action("Index", "accounts")" class="navlink">
+                    <span>Đăng nhập</span>
+                </a>
+                <div class="navactive"></div>
+            </div>
+
+        </nav>
+
+    </div>
+    <div id="overlay" class="holder"></div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+    <footer class="col-12 col-s-12">
+        <div class="flexrow allinfo">
+            <div class="policy flexcolumn">
+                <h3>Điều khoản</h3>
+                <a>Chính sách bảo hành</a>
+                <a>Vận chuyển</a>
+                <a>Thanh Toán</a>
+            </div>
+            <div class="infostore col-5">
+                <h3>Liên hệ</h3>
+                <div>
+                    <span>Địa chỉ:</span>
+                    <span>Thôn Trung, Xã An Vĩ, Huyện Khoái Châu, Tỉnh Hưng Yên</span>
+                </div>
+                <div>
+                    <span>Số điện thoại:</span>
+                    <a href="tel:0976401697">0976401697</a>
+                </div>
+                <div>
+                    <span>email:</span>
+                    <a href="mailto:anhtukc2.0@gmail.com">anhtukc2.0@gmail.com</a>
+                </div>
+
+            </div>
+            <div class="socialmedia">
+                <h3>Mạng xã hội</h3>
+                <div class="flexrow wrap ">
+                    <div class="mediaicon">
+                        <img src="images/zalo-icon.png" width=30 height=30 alt="">
+                    </div>
+                    <div class="mediaicon"><img src="images/fb-icon.png" width=30 height=30 alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <span>Bản quyền thuộc về công ty LaptopWorld 2019</span>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+<script src="~/Content/js/thumbnail.js"></script>
+<script src="~js/menu.js"></script>
+
+<script>
+    const slider = document.getElementById('productslider');
+    const componentslider = document.getElementById('componentslider');
+    const gearslider = document.getElementById('gearslider');
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    function scrollclick(e) {
+        isDown = true;
+        this.classList.add('productactive');
+        startX = e.pageX - this.offsetLeft;
+        scrollLeft = this.scrollLeft;
+    }
+
+    function scrollmove(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - this.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        this.scrollLeft = scrollLeft - walk;
+
+    }
+
+    function stopscroll(e) {
+        isDown = false;
+        this.classList.remove('productactive');
+    }
+    slider.addEventListener('mousedown', scrollclick);
+    slider.addEventListener('mouseleave', stopscroll);
+    slider.addEventListener('mouseup', stopscroll);
+    slider.addEventListener('mousemove', scrollmove);
+
+    componentslider.addEventListener('mousedown', scrollclick);
+    componentslider.addEventListener('mouseleave', stopscroll);
+    componentslider.addEventListener('mouseup', stopscroll);
+    componentslider.addEventListener('mousemove', scrollmove);
+
+    gearslider.addEventListener('mousedown', scrollclick);
+    gearslider.addEventListener('mouseleave', stopscroll);
+    gearslider.addEventListener('mouseup', stopscroll);
+    gearslider.addEventListener('mousemove', scrollmove);
+</script>
+</html>

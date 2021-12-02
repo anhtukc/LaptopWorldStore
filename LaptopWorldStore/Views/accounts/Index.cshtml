@@ -1,0 +1,42 @@
+﻿@model LaptopWorldStore.Models.account
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="main col-4 marginauto ">
+
+
+   
+        @using (Html.BeginForm("Index", "accounts", FormMethod.Get, new {@Class = "marginauto singin-form col-lg-12" }))
+        {
+            <div class=" col-11 marginauto">
+                @Html.LabelFor(m => m.username)
+                @Html.TextBoxFor(m => m.username, "", new { @class = "col-12", @placeholder = "First Name" })
+                @Html.ValidationMessageFor(m => m.username, "", new { @class = "badge badge-danger" })
+            </div>
+
+            <div class="col-11 marginauto">
+                @Html.LabelFor(m => m.password)
+                @Html.PasswordFor(m => m.password, new { @class = " col-12", @placeholder = "First Name" })
+                @Html.ValidationMessageFor(m => m.password, "", new { @class = "badge badge-danger" })
+            </div>
+            <p class="col-11 marginauto">
+                @Html.ValidationMessage("FailSignin", new {@class= "text-danger" })
+            </p>
+            <div class="col-11 marginauto">
+                <input class="btn btn-danger col-12" type="submit" id="submit" value="Đăng nhập" />
+            </div>
+           
+
+        }
+  
+
+
+
+</div>
+<link href="~/Content/css/signin.css" rel="stylesheet" />
+
+   

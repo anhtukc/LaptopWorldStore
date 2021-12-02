@@ -1,0 +1,87 @@
+.filler{
+    margin: 2rem 0;
+    border: 1px solid rgb(165, 164, 164);
+}
+.fillbybrand{
+    flex-direction: row;
+}
+
+.brandbox{
+    height: 4rem;
+    border: 1px solid rgb(135, 136, 136);
+    border-radius: 1rem;
+    width: 15%;
+    text-align: center;
+    line-height: 4rem;
+}
+
+.slidershow{
+    position: absolute;
+    justify-content: space-between;
+    left: 15rem;
+}
+.brandpicture{
+   max-height: 4rem;
+   max-width: 90%;
+   margin: auto;
+}
+
+.pricearea{
+    margin-left: 5rem;
+    padding-top: 0.5rem;
+    
+}
+
+.fillbyprice{
+    margin: 2rem 0;
+}
+
+.pricebox{
+    height: 4rem;
+    border: 1px solid rgb(167, 166, 166);
+    margin-left: 2rem;
+    color: gray;
+    background-color: white;
+}
+.tittle{
+    color:black;
+    font-size: 1.7rem;
+   
+}
+
+.sorter{
+    margin: 2rem;
+}
+.fillproviderbutton, .sortbutton{
+    background-color: white;
+    border: 1px solid rgb(231, 226, 196);
+    color: rgb(9, 151, 151);
+    margin-left: 1.8rem;
+    font-size: 1.8rem;
+}
+
+.fillproviderbuttonclick{
+    background-color: rgb(60, 98, 107);
+}
+
+.priceboxactive{
+    background-color: rgb(9, 151, 151);
+    color: white;
+}
+
+.fillbutton{
+    background-color: rgb(228, 240, 239);
+    font-size: 2.3rem;
+    color: rgb(9, 161, 161);
+    border: 1px solid rgb(196, 195, 195);
+    margin: 0.5rem;
+}
+
+#undonefiller{
+    background-color: rgb(192, 27, 27);
+    font-size: 1.8rem;
+    color: rgb(248, 248, 248);
+    border: 1px solid rgb(196, 195, 195);
+    margin: 0.5rem;
+}
+

@@ -1,0 +1,190 @@
+
+   .main{
+        overflow: hidden;
+
+    }
+    .thumbnailbox {
+        padding-top: 1rem ;
+        border: 1px solid rgb(167, 167, 167);
+        height: 8.75rem;
+
+        border-left: 5px solid rgb(175, 173, 173);
+        cursor: pointer;
+        position: relative;
+    }
+    .thumbnailstate{
+        position: absolute;
+        top: 97%;
+        padding: 0.2rem;
+        background: linear-gradient( to right, rgb(18, 166, 252) 50%,  white 50%) right;
+        background-size: 200%;
+    }
+
+    .thumbnailactive{      
+        background-position: left;
+        transition: all 3s ease-out;
+    }
+    .textthumbnail{
+        margin-top: 1rem;
+        font-size: 1.7rem;
+        transition: all 0.2s ease;
+    }
+    .textactive{
+        padding-left: 1rem;
+        margin-top: 0.8rem;
+  
+        color: rgb(8, 136, 211);
+    }
+    .thumbnailimageitem{
+        height: 35rem;
+    }
+
+    .thumbnailinfo div:first-of-type{
+        border-radius: 0 5px 0 0;
+    }
+    
+    .thumbnailinfo div:last-of-type{
+        border-radius: 0 0 5px 0;
+    }
+    .product{
+        min-height: 40rem;
+        width: 100%;       
+        position: relative;
+       overflow: visible;
+    
+    }
+    
+    .productbox {
+        display: inline-block;
+        position: relative;
+        border: 0.1px solid rgb(207, 205, 205);
+        padding: 1.5rem 2rem;
+        transition: all 0.3s ease;
+        min-width: 20%;
+    }
+    .productbox img:hover{
+        position: relative;
+        top: -0.4rem;
+        transition: all 0.6s ease;
+       
+    }
+    .productname{
+        min-height: 3rem;
+    }
+    .productprice{
+        font-size:1.7rem;
+        font-weight: 600;
+        color: red;
+    }
+    .productactive {
+        background: rgba(255,255,255,0.3);
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+        transform: scale(1);
+      }
+    .buybutton{
+        display: none;
+        height: 4rem;
+        font-size: 1.8rem;
+        background-color: #34b9e9;
+        border:1px solid transparent;
+        color: white;
+    }
+
+    .buybutton a{
+        color: white;
+    }
+    
+    .containerslider{
+        position: absolute;
+        align-items: normal;
+        overflow-y:scroll;
+        overflow-x: hidden;
+    }
+    
+
+    
+    .component, .gear{
+        position: relative;
+        border: 2px solid rgb(177, 177, 177);
+        padding: 1rem;
+        width: 20%;
+        transition: all 0.3s ease;
+        position: relative;
+        border-radius: 1rem;
+    }
+    .component:hover, .gear:hover, .productbox:hover{
+        border: 2px solid red;   
+        transition: all 0.2s ease;    
+        box-shadow: 0 4px 24px rgb(0 0 0 / 25%);
+        z-index: 3;
+    }
+    .componentpicture,.gearpicture {
+        height: 13rem;
+        width: 100%;   
+    }
+    
+
+    .gotopage{
+        position: absolute;
+        top:85%;
+        border: 1px solid rgb(12, 157, 194);
+        border-radius: 1rem;
+        background-color: white;
+        height: 4rem;
+        margin-left: 40%;
+        font-size: 1.8rem;
+    }
+    
+   
+    @media screen and (max-width:768px) {
+        [class*="col-"]{
+            width: 100%;
+        }
+
+        .flexrow{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .thumbnailimageitem{
+            height: 25rem;
+        }
+        .flexcolumn{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        .thumbnailinfo, .productbox:hover .productspecs{
+            display: none;
+        }
+        .component:hover, .gear:hover, .productbox:hover{
+            width: 50%;
+        }
+        .product{
+            height: auto;
+        }
+        .productbox{
+            margin: 0;
+        }
+        #productslider, .containerslider, .gotopage{
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        
+        .productbox .buybutton{
+            position: absolute;
+            top: 85%;
+            left: 0;
+            width: 100%;
+        }
+
+        .gotopage{
+            margin-left: 30%;
+        }
+        .fa-remove:before, .fa-close:before, .fa-times:before{
+            width: 3rem;
+            height: 3rem;
+        }
+    }

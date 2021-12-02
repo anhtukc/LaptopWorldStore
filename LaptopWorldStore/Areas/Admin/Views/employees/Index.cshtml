@@ -1,0 +1,89 @@
+﻿@model IPagedList<LaptopWorldStore.Models.employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@using PagedList;
+@using PagedList.Mvc;
+
+<h4 class="page-title">Nhân viên</h4>
+
+<div class="main-content">
+    <div class="function-place">
+            @Html.ActionLink(" Thêm mới", "Create", new { }, new { @class = "btn fas fa-plus" })
+    </div>
+    <div class="table-function-place">
+            @using (Html.BeginForm("Index", "employees", FormMethod.Get))
+            {
+
+                @Html.TextBox("SearchString") <input class="btn search-btn" type="submit" value="Tìm kiếm" />
+
+            }
+    </div>
+    <table id="dynamic-table" class="table table-hover table-striped">
+        <thead class="thead-dark">
+                <tr>
+                                                                    <th>
+                        @Html.DisplayNameFor(model => model.First().employee_name)
+                    </th>
+                                            <th>
+                        @Html.DisplayNameFor(model => model.First().phonenumber)
+                    </th>
+                                            <th>
+                        @Html.DisplayNameFor(model => model.First().birthday)
+                    </th>
+                                            <th>
+                        @Html.DisplayNameFor(model => model.First().address)
+                    </th>
+                                            <th>
+                        @Html.DisplayNameFor(model => model.First().email)
+                    </th>
+                                            <th>
+                        @Html.DisplayNameFor(model => model.First().flag)
+                    </th>
+                                            <th>
+                        @Html.DisplayNameFor(model => model.First().cmnd)
+                    </th>
+                                <th></th>
+                </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                                                <td>
+                    @Html.DisplayFor(modelItem => item.employee_name)
+                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.phonenumber)
+                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.birthday)
+                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.flag)
+                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.cmnd)
+                </td>
+                        <td>
+                    @Html.ActionLink(" ", "Edit", new { id=item.employee_id } , new { @Class = "text-primary far fa-edit table-button" }) 
+                    @Html.ActionLink(" ", "Details", new { id=item.employee_id } , new { @Class = "gray fas fa-info-circle table-button" }) 
+                    @Html.ActionLink(" ", "Delete", new { id=item.employee_id }, new { @Class = "text-danger far fa-trash-alt table-button" })
+                </td>
+                    </tr>
+        }
+    </tbody>
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", "employees", new { page, searchString = Request.QueryString["searchString"] }),
+                                                                                   new PagedListRenderOptions
+                                                                                        {
+                                                                                      ContainerDivClasses = new string[] { "page-item" }
+                                                                                   })
+</div>    
