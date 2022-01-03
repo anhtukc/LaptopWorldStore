@@ -1,6 +1,4 @@
-﻿@model LaptopWorldStore.Models.sellbill
-
-
+﻿@model LaptopWorldStore.Models.receiptbill
 
 @Styles.Render("~/Content/css")
 @Scripts.Render("~/bundles/modernizr")
@@ -11,21 +9,20 @@
 <style>
     .logo-print {
         text-align: center;
-        position: relative;
+        position:relative;
     }
-
-        .logo-print img {
-            left: 30%;
-        }
+    .logo-print img{
+        left: 30%;
+    }
 </style>
 <div ng-app="app">
-    <div class="page-content container" ng-show="Details != null" ng-controller="SellBills" ng-init="GetDetail('@Model.sellbill_id')">
+    <div class="page-content container" ng-show="Details != null" ng-controller="receiptbill" ng-init="GetDetail('@Model.receiptbill_id')">
         <div class="page-header text-blue-d2">
-
+            
 
             <div class="page-tools">
                 <div class="action-buttons">
-                    <a class="btn bg-white btn-light mx-1px text-95" href="@Url.Action("Index","sellbills")"><i class="fas fa-home"></i>Back</a>
+                    <a class="btn bg-white btn-light mx-1px text-95" href="@Url.Action("Index","receiptbills")"><i class="fas fa-home"></i>Back</a>
                     <a class="btn bg-white btn-light mx-1px text-95" id="bill-print" href="#" data-title="Print" role="button">
                         <i class="mr-1 fa fa-print text-primary-m1 text-120 w-2"></i>
                         Print
@@ -37,7 +34,7 @@
                 Hóa đơn
                 <small class="page-info">
                     <i class="fa fa-angle-double-right text-80"></i>
-                    ID:@Model.sellbill_id
+                    ID:@Model.receiptbill_id
                 </small>
             </h1>
         </div>
@@ -54,9 +51,9 @@
 
                 </div>
                 <div class="col-5">
-                    <h4>Họ tên: @Model.customer.customer_name</h4>
-                    <h4>Địa chỉ: @Model.customer.address</h4>
-                    <h4>Số điện thoại: @Model.customer.phonenumber</h4>
+                    <h4>Nhà cung cấp: @Model.provider.provider_name</h4>
+                    <h4>Địa chỉ: @Model.provider.address</h4>
+                    <h4>Số điện thoại: @Model.provider.phonenumber</h4>
 
                 </div>
             </div>
@@ -91,7 +88,7 @@
 </div>
 <script src="~/Scripts/angular.min.js"></script>
 <script src="~/Content/js/app.js"></script>
-<script src="~/Content/js/AdminSellbillDetails.js"></script>
+<script src="~/Content/js/adminReceiptBill.js"></script>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script>
     $('#bill-print').click(function () {

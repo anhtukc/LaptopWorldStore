@@ -97,8 +97,7 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult GetAllProduct()
         {
-            var list = from l in db.products
-                       select l;
+            var list = db.products.Select(pd => new { pd.product_id, pd.product_name, pd.quantity, pd.price }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Edit(string id)
@@ -135,30 +134,27 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
             return View(product);
         }
 
-        // GET: Admin/products/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            product product = db.products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
+      
 
         // POST: Admin/products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        [HttpPost]
+        public string Delete(string id)
         {
+            var product_in_bill = db.sellbilldetails.Where(dt => dt.product_id == id).FirstOrDefault();
+            if(product_in_bill != null)
+            {
+                var pd = db.products.Find(id);
+                pd.flag = false;
+                db.SaveChanges();
+                return "hideproduct";
+            }
             product product = db.products.Find(id);
+             db.laptops.RemoveRange(db.laptops.Where(lt => lt.product_id == product.product_id));
+            db.rams.RemoveRange(db.rams.Where(lt => lt.product_id == product.product_id));
+            db.ssds.RemoveRange(db.ssds.Where(lt => lt.product_id == product.product_id));
             db.products.Remove(product);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return "deletesuccessful";
         }
         public ActionResult Signout()
         {

@@ -1,4 +1,4 @@
-namespace LaptopWorldStore.Models
+﻿namespace LaptopWorldStore.Models
 {
     using System;
     using System.Collections.Generic;
@@ -10,11 +10,13 @@ namespace LaptopWorldStore.Models
     public partial class laptop
     {
         [StringLength(50)]
+        [Display(Name = "Mã sản phẩm")]
         public string product_id { get; set; }
 
         [Key]
         [Column(Order = 0)]
         [StringLength(200)]
+        [Display(Name = "Màn hình")]
         public string monitor { get; set; }
 
         [Key]
@@ -40,11 +42,13 @@ namespace LaptopWorldStore.Models
         [Key]
         [Column(Order = 5)]
         [StringLength(200)]
+        [Display(Name = "Hệ điều hành")]
         public string os { get; set; }
 
         [Key]
         [Column(Order = 6)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Cân nặng")]
         public int weight { get; set; }
 
         [Key]

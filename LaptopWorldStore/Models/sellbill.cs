@@ -1,4 +1,4 @@
-namespace LaptopWorldStore.Models
+﻿namespace LaptopWorldStore.Models
 {
     using System;
     using System.Collections.Generic;
@@ -17,18 +17,22 @@ namespace LaptopWorldStore.Models
         }
 
         [Key]
+        [Display(Name = "Mã hóa đơn bán")]
         public Guid sellbill_id { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Ngày tạo")]
         public DateTime? billDate { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Phương thức vận chuyển")]
         public string shippingtype { get; set; }
 
         [Required]
-        [StringLength(15)]
-        public string customerphonenumber { get; set; }
+        [Display(Name = "Khách hàng")]
+        public Guid customer_id { get; set; }
 
+        [Display(Name = "Tổng tiền")]
         public decimal total_paid { get; set; }
 
         public bool flag { get; set; }

@@ -24,13 +24,11 @@ namespace LaptopWorldStore.Models
 
         public decimal price { get; set; }
 
-        public int quatity { get; set; }
+        public int quantity { get; set; }
 
         public decimal grand_paid { get; set; }
 
         public bool flag { get; set; }
-
-        public virtual product product { get; set; }
 
         public virtual receiptbill receiptbill { get; set; }
     }

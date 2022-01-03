@@ -30,7 +30,7 @@
                             <a class="dropdown-item" href="#">Thay mật khẩu</a>
                         </div>
                         <div>
-                            <a class="dropdown-item" href="@Url.Action("Singout", "products")">Đăng xuất</a>
+                            <a class="dropdown-item" href="/home/index">Đăng xuất</a>
                         </div>
                     </div>
                 </div>
@@ -46,11 +46,7 @@
                             <span>Sản phẩm</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="@Url.Action("index", "categories")">
-                            <span>Loại sản phẩm</span>
-                        </a>
-                    </li>
+
                     <li class="">
                         <a href="@Url.Action("index", "news")">
                             <span>Tin tức</span>
@@ -73,12 +69,17 @@
                     </li>
                     <li>
                         <a href="@Url.Action("index", "receiptbills")">
-                            <span>Hóa đơn nhậps</span>
+                            <span>Hóa đơn nhập</span>
                         </a>
                     </li>
                     <li>
                         <a href="@Url.Action("index", "sellbills")">
                             <span>Hóa đơn bán</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("index", "news")">
+                            <span>Tài khoản</span>
                         </a>
                     </li>
                 </ul>

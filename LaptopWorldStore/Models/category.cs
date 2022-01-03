@@ -1,4 +1,4 @@
-namespace LaptopWorldStore.Models
+﻿namespace LaptopWorldStore.Models
 {
     using System;
     using System.Collections.Generic;
@@ -17,13 +17,16 @@ namespace LaptopWorldStore.Models
 
         [Key]
         [StringLength(50)]
+        [Display(Name = "Mã mục")]
         public string category_id { get; set; }
 
         [Required]
         [StringLength(200)]
+        [Display(Name = "Tên mục")]
         public string category_name { get; set; }
 
         [StringLength(4000)]
+        [Display(Name = "chú thích")]
         public string description { get; set; }
 
         public bool flag { get; set; }

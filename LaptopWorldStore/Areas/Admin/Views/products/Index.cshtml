@@ -10,9 +10,14 @@
 
 <h4 class="page-title">Sản phẩm</h4>
 
-<div class="main-content">
+<div class="main-content" ng-controller="adminproduct">
     <div class="function-place">
-        @Html.ActionLink(" Thêm mới", "Create", new { }, new { @class = "btn fas fa-plus" })
+        <select ng-model="product.category_id">
+            <option value="laptop">Laptop</option>
+            <option value="ssd">ssd</option>
+            <option value="ram">ram</option>
+        </select>
+        <a ng-click="RedicrecToCreatePage()" class="btn fas fa-plus">Thêm mới</a>
     </div>
     <div class="table-function-place">
         @using (Html.BeginForm("Index", "products", FormMethod.Get))
@@ -79,7 +84,7 @@
                     <td>
                         @Html.ActionLink(" ", "Edit", new { id = item.product_id }, new { @Class = "text-primary far fa-edit table-button" })
                         @Html.ActionLink(" ", "Details", new { id = item.product_id }, new { @Class = "gray fas fa-info-circle table-button" })
-                        @Html.ActionLink(" ", "Delete", new { id = item.product_id }, new { @Class = "text-danger far fa-trash-alt table-button" })
+                        <a class="text-danger far fa-trash-alt table-button" ng-click="DeleteProduct('@item.product_id')"></a>
                     </td>
                 </tr>
             }
@@ -91,3 +96,4 @@
                                                                                       ContainerDivClasses = new string[] { "page-item" }
                                                                                    })
 </div>
+<script src="~/Content/js/admin-product.js"></script>

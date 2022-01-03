@@ -1,0 +1,100 @@
+﻿@model LaptopWorldStore.Models.receiptbill
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/css/bill.css" rel="stylesheet" />
+<h4 class="page-title">Create</h4>
+
+<div class="form-create" ng-controller="receiptbill">
+    
+        
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label>Nhân viên nhận hàng:</label>
+            <select ng-model="employee_id">
+                <option value="{{item.employee_id}}" ng-repeat="item in employee track by $index"
+                        ng-selected="{{item.employe_id == employe_id}}">
+                    {{item.employee_name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nhà cung cấp:</label>
+            <select ng-model="provider_id">
+                <option value="{{item.provider_id}}" ng-repeat="item in provider track by $index"
+                        ng-selected="{{item.provider_id == provider_id}}">
+                    {{item.provider_name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="">
+                <input type="submit" ng-click="CreateBill()" value="Tạo" class="btn btn-primary" />
+
+            </div>
+        </div>
+        <div class="product-create">
+            <div class="form-group">
+                <label class="label-product col-2">Mã sản phẩm: </label>
+                <input type="text" ng-model="product_id" class="input-product" ng-change="LogName()">
+
+            </div>
+            <div class="form-group">
+                <label class="label-product col-2">Tên sản phẩm: </label>
+                <input type="text" ng-model="product_name" class="input-product">
+
+            </div>
+            <div class="form-group">
+                <label class="label-product col-2">Đơn giá:</label>
+                <input type="number" ng-model="price" />
+            </div>
+
+            <div class="form-group">
+                <label class="label-product col-2">Số lượng:</label>
+                <input type="number" ng-model="quantity" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Làm mới" class="btn btn-primary"  ng-click="NewBill()"/>
+                <button class="btn btn-primary" ng-click="AddBillDetails()">Thêm</button>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Mã sản phẩm</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Giá bán</th>
+                        <th scope="col">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in Details track by $index">
+                    <tr>
+                        <td>{{item.product_id}}</td>
+                        <th scope="row">{{item.product_name}}</th>
+                        <td>{{item.quantity}}</td>
+                        <td> {{item.price | currency:'' :0}}đ</td>
+                        <td>{{item.grand_paid| currency:'' :0}}đ</td>
+                        <td>
+                            <button class="text-primary far fa-edit table-button" ng-click="EditBillDetails(item.product_id)"></button>
+                            <button class="text-danger far fa-trash-alt" ng-click="DeleteBillDetail(item.product_id)"></button>
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tr>
+                    <td colspan="3"></td>
+                    <th>Tổng tiền</th>
+                    <td>{{total_paid| currency:'' :0}}đ</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+   
+
+    
+</div>
+<script src="~/Content/js/adminReceiptBill.js"></script>

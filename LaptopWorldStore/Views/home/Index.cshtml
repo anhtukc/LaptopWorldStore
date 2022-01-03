@@ -10,20 +10,20 @@
 
 
 <section class="main col-11 col-s-12 marginauto flexcolumn">
-    <section class="thumbnail flexrow col-12 col-s-12" id="thumbnail" ng-controller="news">
+    <section class="thumbnail flexrow col-12 col-s-12" id="thumbnail" ng-controller="news" ng-init="autoslide">
         <div id="thumbnailimages" class="col-9 col-s-12">
 
             <div class="col-12" ng-repeat="item in listdata">
                 <a data-ng-href="@Url.Action("Details","_new")/{{item.New_id}}">
-                    <img class='thumbnailimageitem col-12' src="~/Content/images/news/{{item.picture}}" alt="">
+                    <img class='thumbnailimageitem col-12' src="~/Content/images/news/{{item.picture}}" style="display:none;" alt="">
                 </a>
             </div>
 
         </div>
 
             <div class="thumbnailinfo col-3">
-                <div class="col-12" ng-repeat="item in listdata" ng-init="index =0;">
-                    <div class="thumbnailbox col-12" onclick="slides(index+1)">
+                <div class="col-12" ng-repeat="item in listdata" >
+                    <div class="thumbnailbox col-12" ng-click="slides($index)">
                         <p class="textthumbnail marginauto col-11">{{item.new_name}}</p>
                         <div class="thumbnailstate col-12"></div>
                     </div>
@@ -35,7 +35,7 @@
     </section>
     <section class="product">
         <h1>Sản phẩm nổi bật</h1>
-        <div class='flexrow'>
+       
             <div class="containerslider flexrow" id="productslider">
                 @foreach (var item in Model)
                 {
@@ -46,45 +46,32 @@
                                 <img src="@Url.Content("~/Content/images/product/" + item.picture)" height="120" class="col-12" />
                             </a>
                             <small>ID: @item.product_id</small>
-                            <h4 class="productname"> @Html.ActionLink(@item.product_name, "Details", "products", new { id = item.product_id }, null)</h4>
+                            <h4 class="productname"> @Html.ActionLink(@item.product_name, item.category.category_id + "s", "products", new { id = item.product_id }, null)</h4>
                             <p>Giá: <span class="productprice">@string.Format("{0: ###,###,###,000}", @item.price) đ</span></p>
                         </section>
                     }
 
                 }
             </div>
-        </div>
+        
     </section>
     <section class="product">
         <h1>Sản phẩm mới</h1>
         <div class='flexrow'>
-            <div class="containerslider flexrow" id="productslider">
+            <div class="containerslider flexrow" id="componentslider">
                 @foreach (var item in Model)
                 {
 
-                    if (item.category_id == "laptop")
-                    {
+                   
                         <section class="productbox col-3 col-s-6 ">
-                            <a href='@Url.Action("Details", "products", new { id = item.product_id })'>
+                            <a href='@Url.Action("Details", item.category.category_id + "s", new { id = item.product_id })'>
                                 <img src="@Url.Content("~/Content/images/product/" + item.picture)" height="120" class="col-12" />
                             </a>
                             <small>ID: @item.product_id</small>
                             <h4 class="productname"> @Html.ActionLink(@item.product_name, "Details", "products", new { id = item.product_id }, null)</h4>
                             <p>Giá: <span class="productprice">@string.Format("{0: ###,###,###,000}", @item.price) đ</span></p>
                         </section>
-                    }
-                    else if(item.category_id == "ram"){
-                        <section class="productbox col-3 col-s-6 ">
-                            <a href='@Url.Action("Details", "rams", new { id = item.product_id })'>
-                                <img src="@Url.Content("~/Content/images/product/" + item.picture)" height="120" class="col-12" />
-                            </a>
-                            <small>ID: @item.product_id</small>
-                            <h4 class="productname"> @Html.ActionLink(@item.product_name, "Details", "rams", new { id = item.product_id }, null)</h4>
-                            <p>Giá: <span class="productprice">@string.Format("{0: ###,###,###,000}", @item.price) đ</span></p>
-                        </section>
-                        
-                    }
-
+                 
                
 
                     }
@@ -92,26 +79,4 @@
         </div>
     </section>
 </section>
-<script>
-    app.controller("news", function ($scope, $http) {
-        $scope.index = 0;
-        $scope.new_id = "";
-        $scope.new_name = "";
-        $scope.author_name = "";
-        $scope.picture = "";
-        $scope.Date_Created = "";
-        $scope.Content = "";
-        var GetNew = function () {
-            $http({
-                method: "GET",
-                url: "/_new/GetNewHomePage"
-            }).then(function (res) {
-                $scope.listdata = res.data;
-                console.log($scope.listdata);
-            }), (function (error) {
-                console.log(error);
-            })
-        };
-        GetNew();
-    })
-</script>
+<script src="~/Content/js/thumbnail.js"></script>

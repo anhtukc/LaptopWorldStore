@@ -26,21 +26,22 @@ namespace LaptopWorldStore.Controllers
 
         public void CheckCustomerInfo(customer _ct)
         {
-            customer ct = db.customers.Find(_ct.phonenumber);
+            customer ct = db.customers.Where(c => c.phonenumber == _ct.phonenumber).FirstOrDefault();
             if(ct == null)
             {
-
+                _ct.customer_id = Guid.NewGuid();
                 db.customers.Add(_ct);
                 db.SaveChanges();
             }
         }
-       public string Create( string phonenumber, string shippingtype,decimal totalprice, sellbilldetail[] list)
-        { 
+       public string Create(string phonenumber, string shippingtype,decimal totalprice, sellbilldetail[] list)
+        {
+            customer ct = db.customers.Where(c => c.phonenumber == phonenumber).FirstOrDefault();
                 sellbill sb = new sellbill();               
                 sb.billDate = DateTime.Now;
                 sb.sellbill_id = Guid.NewGuid();
-                sb.customer = db.customers.Find(phonenumber);
-                sb.customerphonenumber = phonenumber;
+                sb.customer = ct;
+                sb.customer_id = ct.customer_id;
                 sb.shippingtype = shippingtype;
                 sb.total_paid = totalprice;
                 sb.flag = true;
@@ -56,7 +57,7 @@ namespace LaptopWorldStore.Controllers
                 db.SaveChanges();
 
             
-             return "Đặt hàng thành công";
+             return "CreateSuccessful";
            
         }
        

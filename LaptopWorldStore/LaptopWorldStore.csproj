@@ -138,8 +138,10 @@
     <Compile Include="Areas\Admin\Controllers\categoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\customersController.cs" />
     <Compile Include="Areas\Admin\Controllers\employeesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\laptopsController.cs" />
     <Compile Include="Areas\Admin\Controllers\productsController.cs" />
     <Compile Include="Areas\Admin\Controllers\providersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\receiptbillsController.cs" />
     <Compile Include="Areas\Admin\Controllers\sellbillsController.cs" />
     <Compile Include="Controllers\accountsController.cs" />
     <Compile Include="Controllers\homeController.cs" />
@@ -172,8 +174,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\AdminBill.css" />
+    <Content Include="Content\css\bill.css" />
     <Content Include="Content\css\news-page.css" />
     <Content Include="Content\images\searchicon.png" />
+    <Content Include="Content\js\admin-product.js" />
     <Content Include="Content\js\AdminSellbillDetails.js" />
     <Content Include="Content\js\angular.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -238,6 +242,7 @@
     <Content Include="Content\js\buybtn.js" />
     <Content Include="Content\js\componentpage.js" />
     <Content Include="Content\js\CrudService.js" />
+    <Content Include="Content\js\adminReceiptBill.js" />
     <Content Include="Content\js\laptoppage.js" />
     <Content Include="Content\js\menu.js" />
     <Content Include="Content\js\userproduct.js" />
@@ -303,10 +308,6 @@
     <Content Include="Areas\Admin\Views\employees\Details.cshtml" />
     <Content Include="Areas\Admin\Views\employees\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\employees\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\products\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\products\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\products\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\products\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\products\Index.cshtml" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -322,10 +323,17 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Areas\Admin\Views\sellbills\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\sellbills\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\sellbills\Details.cshtml" />
     <Content Include="Areas\Admin\Views\sellbills\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\sellbills\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\laptops\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\laptops\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\laptops\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\laptops\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\receiptbills\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\receiptbills\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\receiptbills\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\receiptbills\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

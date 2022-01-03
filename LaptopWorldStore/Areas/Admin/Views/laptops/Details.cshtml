@@ -1,0 +1,29 @@
+﻿@model LaptopWorldStore.Models.laptop
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="page-title">Details</h4>
+
+<div class="form-edit">
+    <div>
+        
+        <dl class="dl-horizontal">
+                    <dt>
+                @Html.DisplayNameFor(model => model.product.category_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.product.category_id)
+            </dd>
+
+            </dl>
+    </div>
+    <p style="margin-left: 3rem">
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { /* id = Model.PrimaryKey */ }, new { @class = "btn btn-primary" }) 
+        @Html.ActionLink("Quay lại", "Index", "", new { @class = "btn btn-default" })
+
+        </p>
+</div>

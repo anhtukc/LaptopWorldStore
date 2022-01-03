@@ -100,10 +100,6 @@ namespace LaptopWorldStore.Models
                 .Property(e => e.price)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<product>()
-                .HasMany(e => e.receiptbilldetails)
-                .WithRequired(e => e.product)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<product>()
                 .HasMany(e => e.sellbilldetails)
@@ -157,8 +153,7 @@ namespace LaptopWorldStore.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<sellbill>()
-                .Property(e => e.customerphonenumber)
-                .IsUnicode(false);
+                        .Property(e => e.customer_id).IsRequired();
 
             modelBuilder.Entity<sellbill>()
                 .Property(e => e.total_paid)

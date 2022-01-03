@@ -1,70 +1,141 @@
-﻿@model LaptopWorldStore.Models.sellbill
+﻿ @model LaptopWorldStore.Models.sellbill
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-}
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";}
+<style>
+    .product-create{
+        border: 1px solid gray;
+        margin-top:1rem;
+        padding: 0.6rem;
 
+    }
+    .input-product{
+        display:inline-block;
+        min-width: 70%;
+        margin: 0.2rem;
+    }
+    .customer label{
+        min-width: 8.5%;
+    }
+   
+    #name, #phonenumber {
+        display: inline-block;
+        min-width: 70%;
+    }
+    #address {
+        display: inline-block;
+        min-width: 98%;
+    }
+    .label-product {
+        width: 13%;
+    }
+    
+</style>
 <h4 class="page-title">Create</h4>
 
-<div class="form-create">
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                    @Html.LabelFor(model => model.billDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.billDate, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.billDate, "", new { @class = "text-danger" })
-                        </div>
-            </div>
+<div class="form-create col-12" ng-controller="SellBills">
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.shippingtype, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.shippingtype, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.shippingtype, "", new { @class = "text-danger" })
-                        </div>
-            </div>
+    <div class="form-horizontal col-12">
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.customerphonenumber, "customerphonenumber", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                            @Html.DropDownList("customerphonenumber", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.customerphonenumber, "", new { @class = "text-danger" })
-                        </div>
-            </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.total_paid, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.total_paid, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.total_paid, "", new { @class = "text-danger" })
-                        </div>
-            </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.flag, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                        @Html.EditorFor(model => model.flag)
-                                @Html.ValidationMessageFor(model => model.flag, "", new { @class = "text-danger" })
-                                </div>
-                    </div>
-            </div>
-
-                <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                    @Html.ActionLink("Back to List", "Index", "", new {@class = "btn btn-default" })
+        <div class="form-group flex ">
+            <div class="flex customer col-6">
+                <label for="total" class="col-2">Họ tên:</label>
+                <div class="col-10">
+                    <input type="text" id="name" ng-model="user.name"/>
                 </div>
+
+            </div>
+            <div class="flex customer col-6">
+                <label for="total"  class="col-4">Số điện thoại:</label>
+                <div class="col-8">
+                    <input type="text" id="phonenumber" ng-model="user.phonenumber"/>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="form-group flex customer">
+            <label for="total"  class="col-1">Địa chỉ:</label>
+            <div class="col-10">
+                <input type="text" id="address"  ng-model="user.address"/>
+            </div>
+
+        </div>
+        <div class="form-group flex customer">
+            <label for="shipping-type">Phương thức vận chuyển:</label>
+            <div class="">
+                <select name="shipping-type" id="shipping-type" ng-model="user.shipping">
+                    <option value="cod">cod</option>
+                    <option value="transfer">Chuyển khoản</option>
+                </select>
             </div>
         </div>
-    }
-
+        <div class="form-group">
+            <div class="">
+                <input type="submit" value="Tạo" class="btn btn-primary" ng-click="CreateBill()" />
+                <input type="submit" value="Làm mới" class="btn btn-primary" ng-click="" />
+            </div>
+        </div>
+    </div>
     
+    <div class="product-create">
+        <div class="form-group">
+            <label class="label-product">Mã sản phẩm: </label>
+            <input type="text" list="product_id" ng-model="product_id" class="input-product" ng-change="LogName()">
+            <datalist id="product_id">
+                <option ng-repeat="item in productList track by $index" label="{{item.product_name}}">{{item.product_id}}</option>
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label class="label-product">Tên sản phẩm: </label>
+            <input type="text" ng-model="product_name" class="input-product" disabled>
+
+        </div>
+        <div class="form-group">
+            <label class="label-product">Đơn giá:</label>
+            <input type="number" ng-model="price" disabled />
+        </div>
+        
+            <div class="form-group">
+                <label class="label-product">Số lượng còn:</label>
+                <input type="number" ng-model="remaining_quantity" disabled />
+            </div>
+            <div class="form-group">
+                <label class="label-product">Số lượng mua:</label>
+                <input type="number" ng-model="quantity"/>
+            </div>
+       <div class="form-group">
+           <button class="btn btn-primary" ng-click="AddBillDetails()">Thêm</button>
+       </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Mã sản phẩm</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Giá bán</th>
+                    <th scope="col">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="item in Details track by $index">
+                <tr>
+                    <td>{{item.product_id}}</td>
+                    <th scope="row">{{item.product_name}}</th>
+                    <td>{{item.quantity}}</td>
+                    <td> {{item.price | currency:'' :0}}đ</td>
+                    <td>{{item.grand_paid| currency:'' :0}}đ</td>
+                    <td><button ng-click="DeleteDetail(item.product_id)">Xóa</button></td>
+                </tr>
+
+            </tbody>
+            <tr>
+                <td colspan="3"></td>
+                <th>Tổng tiền</th>
+                <td>{{total_paid| currency:'' :0}}đ</td>
+            </tr>
+        </table>
+    </div>
+
 </div>
+<script src="~/Content/js/AdminSellbillDetails.js"></script>

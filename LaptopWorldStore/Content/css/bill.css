@@ -1,0 +1,25 @@
+﻿.product-create {
+    border-top: 1px solid gray;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+}
+
+.input-product {
+    display: inline-block;
+    min-width: 70%;
+    margin: 0.2rem;
+}
+
+.customer label {
+    min-width: 8.5%;
+}
+
+#name, #phonenumber {
+    display: inline-block;
+    min-width: 70%;
+}
+
+#address {
+    display: inline-block;
+    min-width: 98%;
+}

@@ -7,9 +7,9 @@
 @using PagedList;
 @using PagedList.Mvc;
 
-<h4 class="page-title">Index</h4>
+<h4 class="page-title">Hóa đơn bán</h4>
 
-<div class="main-content">
+<div class="main-content" ng-controller="SellBills">
     <div class="function-place">
             @Html.ActionLink(" Thêm mới", "Create", new { }, new { @class = "btn fas fa-plus" })
     </div>
@@ -55,15 +55,13 @@
                     @Html.DisplayFor(modelItem => item.shippingtype)
                 </td>
                                 <td>
-                    @Html.DisplayFor(modelItem => item.total_paid)
+                    @string.Format("{0:###,###,###,000}", item.total_paid)
                 </td>
-                                <td>
-                    @Html.DisplayFor(modelItem => item.flag)
-                </td>
+                                
                         <td>
                     @Html.ActionLink(" ", "Edit", new { id=item.sellbill_id } , new { @Class = "text-primary far fa-edit table-button" }) 
                     @Html.ActionLink(" ", "Details", new { id=item.sellbill_id } , new { @Class = "gray fas fa-info-circle table-button" }) 
-                    @Html.ActionLink(" ", "Delete", new { id=item.sellbill_id }, new { @Class = "text-danger far fa-trash-alt table-button" })
+                    <a class="text-danger far fa-trash-alt table-button" ng-click="DeleteBill('@item.sellbill_id')"></a>
                 </td>
                     </tr>
         }
@@ -75,3 +73,4 @@
                                                                                       ContainerDivClasses = new string[] { "page-item" }
                                                                                    })
 </div>    
+<script src="~/Content/js/AdminSellbillDetails.js"></script>

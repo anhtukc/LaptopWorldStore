@@ -65,6 +65,7 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                customer.customer_id = Guid.NewGuid();
                 db.customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");

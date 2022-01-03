@@ -1,4 +1,4 @@
-namespace LaptopWorldStore.Models
+﻿namespace LaptopWorldStore.Models
 {
     using System;
     using System.Collections.Generic;
@@ -15,15 +15,18 @@ namespace LaptopWorldStore.Models
         [Key]
         [Column(Order = 0)]
         [StringLength(50)]
+        [Display(Name = "Loại ram")]
         public string form_factor { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Bus ram")]
         public int speed { get; set; }
 
         [Key]
         [Column(Order = 2)]
+        [Display(Name = "Dung lượng")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int size { get; set; }
 

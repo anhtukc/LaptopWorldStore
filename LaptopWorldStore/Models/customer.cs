@@ -1,4 +1,4 @@
-namespace LaptopWorldStore.Models
+﻿namespace LaptopWorldStore.Models
 {
     using System;
     using System.Collections.Generic;
@@ -14,17 +14,22 @@ namespace LaptopWorldStore.Models
         {
             sellbills = new HashSet<sellbill>();
         }
-
         [Key]
+        [Display(Name = "Mã nhân viên")]
+        public Guid customer_id { get; set; }
+
         [StringLength(15)]
+        [Display(Name = "Số điện thoại")]
         public string phonenumber { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Tên nhân viên")]
         public string customer_name { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Địa chỉ")]
         public string address { get; set; }
 
         public bool flag { get; set; }

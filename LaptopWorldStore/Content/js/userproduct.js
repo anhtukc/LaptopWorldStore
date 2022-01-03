@@ -138,6 +138,12 @@ app.controller("products",  function ($scope, $http) {
         }
         return checked;
     }
+
+    $scope.EmptyCustomer = function () {
+        $("#name").empty();
+        $('#phonenumber').empty();
+        $('#address').empty();
+    }
     $scope.OrderBuy = function () {
         let list = [];
         $.each($scope.ListInBag, function (i, item) {
@@ -152,19 +158,19 @@ app.controller("products",  function ($scope, $http) {
                 "flag": true
             })
         })
-        var customer = {
+        let customer = {
             'customer_name': $scope.user.name,
             'phonenumber': '0' + $scope.user.phonenumber,
             'address': $scope.user.address,
             'flag': true
         };
-        var resquest = {
+        let resquest = {
             'phonenumber': '0' + $scope.user.phonenumber,
             'shippingtype': $scope.user.shipping,
             'totalprice': $scope.totalprice,
             'list': list
         }
-        var checked = $scope.CheckCustomer();
+        let checked = $scope.CheckCustomer();
         if (checked == true) {
             $http({
                 method: 'Post',
@@ -178,11 +184,14 @@ app.controller("products",  function ($scope, $http) {
                     url: "/ShoppingBag/Create",
                     data: JSON.stringify(resquest)
                 }).then(function (res) {
-                    alert(res.data);
-                    if (res.data == "Đặt hàng thành công") {
-                        $scope.ListInBag = null;
-                        list = null;
-                        SetLocalStorage();
+                    
+                    if (res.data == "CreateSuccessful") {
+                        alert("Đặt hàng thành công");
+                        $scope.ListInBag = [];
+                        list = [];
+                        $scope.CaculateTotalprice = 0;
+                        $scope.EmptyCustomer();
+                        $scope.SetLocalStorage();
                         $scope.CheckBag();
                         $scope.CheckQuantity();
                     }

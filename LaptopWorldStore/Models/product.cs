@@ -1,4 +1,4 @@
-namespace LaptopWorldStore.Models
+﻿namespace LaptopWorldStore.Models
 {
     using System;
     using System.Collections.Generic;
@@ -21,26 +21,31 @@ namespace LaptopWorldStore.Models
 
         [Key]
         [StringLength(50)]
+        [Display(Name = "Mã sản phẩm")]
         public string product_id { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Mã loại")]
         public string category_id { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Mã nhà cung cấp")]
         public string provider_id { get; set; }
 
         [Required]
         [StringLength(200)]
+        [Display(Name = "Tên sản phẩm")]
         public string product_name { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Ảnh")]
         public string picture { get; set; }
-
+        [Display(Name = "Giá bán")]
         public decimal price { get; set; }
-
+        [Display(Name = "Số lượng")]
         public int quantity { get; set; }
-
+        [Display(Name = "Miêu tả")]
         public string decription { get; set; }
 
         public bool flag { get; set; }

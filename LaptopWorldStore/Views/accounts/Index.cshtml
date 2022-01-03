@@ -13,13 +13,13 @@
         @using (Html.BeginForm("Index", "accounts", FormMethod.Get, new {@Class = "marginauto singin-form col-lg-12" }))
         {
             <div class=" col-11 marginauto">
-                @Html.LabelFor(m => m.username)
+                <label>Tài khoản:</label>
                 @Html.TextBoxFor(m => m.username, "", new { @class = "col-12", @placeholder = "First Name" })
                 @Html.ValidationMessageFor(m => m.username, "", new { @class = "badge badge-danger" })
             </div>
 
             <div class="col-11 marginauto">
-                @Html.LabelFor(m => m.password)
+                <label>Mật khẩu:</label>
                 @Html.PasswordFor(m => m.password, new { @class = " col-12", @placeholder = "First Name" })
                 @Html.ValidationMessageFor(m => m.password, "", new { @class = "badge badge-danger" })
             </div>
