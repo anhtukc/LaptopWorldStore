@@ -92,7 +92,7 @@
                     <th scope="row">{{item.product_name}}</th>
                     <td class="flex">
                         <button ng-click="ChangeQuantity(item.product_id)">-</button>
-                        <input type="number" class="quatity" value="{{item.quantity}}">
+                        <input type="number" class="quatity" value="{{item.quantity}}" disabled>
                         <button ng-click="ChangeQuantity(item.product_id, 1)">+</button>
                     </td>
                     <td> {{item.price}} đ</td>

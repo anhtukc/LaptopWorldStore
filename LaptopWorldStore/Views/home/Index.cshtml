@@ -41,14 +41,14 @@
                 {
                     if (item.category.category_name == "laptop")
                     {
-                        <section class="productbox col-3 col-s-6 ">
-                            <a href='@Url.Action("Details", "products", new { id = item.product_id })'>
-                                <img src="@Url.Content("~/Content/images/product/" + item.picture)" height="120" class="col-12" />
-                            </a>
-                            <small>ID: @item.product_id</small>
-                            <h4 class="productname"> @Html.ActionLink(@item.product_name, item.category.category_id + "s", "products", new { id = item.product_id }, null)</h4>
-                            <p>Giá: <span class="productprice">@string.Format("{0: ###,###,###,000}", @item.price) đ</span></p>
-                        </section>
+                <section class="productbox col-3 col-s-6 ">
+                    <a href='@Url.Action("Details", item.category.category_id + "s", new { id = item.product_id })'>
+                        <img src="@Url.Content("~/Content/images/product/" + item.picture)" height="120" class="col-12" />
+                    </a>
+                    <small>ID: @item.product_id</small>
+                    <h4 class="productname"> @Html.ActionLink(@item.product_name, item.category.category_id + "s", "products", new { id = item.product_id }, null)</h4>
+                    <p>Giá: <span class="productprice">@string.Format("{0: ###,###,###,000}", @item.price) đ</span></p>
+                </section>
                     }
 
                 }

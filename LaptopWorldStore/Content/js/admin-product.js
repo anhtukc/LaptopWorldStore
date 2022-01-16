@@ -30,6 +30,7 @@
                 }
                 if (res.data == 'deletesuccessful') {
                     alert('Đã xóa sản phẩm');
+                    location.reload();
                 }
             })
         }

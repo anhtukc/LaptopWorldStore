@@ -7,94 +7,148 @@
 
 <h4 class="page-title">Create</h4>
 
-<div class="form-create">
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                    @Html.LabelFor(model => model.monitor, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.monitor, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.monitor, "", new { @class = "text-danger" })
-                        </div>
+<div class="form-create" ng-controller="admin-laptop">
+    
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.product_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.product_id, new { htmlAttributes = new { @class = "form-control", @id = "product_name", ng_model = "product.product_id" } })
+                @Html.ValidationMessageFor(model => model.product.product_id, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.cpu, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.cpu, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.cpu, "", new { @class = "text-danger" })
-                        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.product_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.product_name, new { htmlAttributes = new { @class = "form-control", @id = "product_name", ng_model = "product.product_name" } })
+                @Html.ValidationMessageFor(model => model.product.product_name, "", new { @class = "text-danger" })
             </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.gpu, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.gpu, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.gpu, "", new { @class = "text-danger" })
-                        </div>
+        </div>
+        <div class="form-group">
+            <div>
+                @Html.LabelFor(model => model.product.provider_id, htmlAttributes: new { @class = "control-label col-md-2" })
             </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ssd, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ssd, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ssd, "", new { @class = "text-danger" })
-                        </div>
+            <div class="col-md-9">
+                @Html.DropDownList("provider_id", null, htmlAttributes: new { @class = "form-control", @id = "provider_id", ng_model = "product.provider_id"})
+                @Html.ValidationMessageFor(model => model.product.provider_id, "", new { @class = "text-danger" })
             </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ram, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ram, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ram, "", new { @class = "text-danger" })
-                        </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.picture, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="picture" id="image-file" ngf-select="uploadFiles($file)" />
             </div>
+        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.os, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.os, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.os, "", new { @class = "text-danger" })
-                        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.price, new { htmlAttributes = new { @class = "form-control", @id = "price", ng_model = "product.price" } })
+                @Html.ValidationMessageFor(model => model.product.price, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.weight, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.weight, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.weight, "", new { @class = "text-danger" })
-                        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.quantity, new { htmlAttributes = new { @class = "form-control", @id = "quantity", ng_model = "product.quantity" } })
+                @Html.ValidationMessageFor(model => model.product.quantity, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.battery, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.battery, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.battery, "", new { @class = "text-danger" })
-                        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.decription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.decription, new { htmlAttributes = new { @class = "form-control", @id = "decription", ng_model = "product.decription" } })
+                @Html.ValidationMessageFor(model => model.product.decription, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.product_id, "product_id", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                            @Html.DropDownList("product_id", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.product_id, "", new { @class = "text-danger" })
-                        </div>
-            </div>
-
-                <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                    @Html.ActionLink("Back to List", "Index", "", new {@class = "btn btn-default" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.flag, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.product.flag, new { htmlAttributes = new { @class = "form-control col-1", @id = "flag", ng_model = "product.flag" } })
+                    @Html.ValidationMessageFor(model => model.product.flag, "", new { @class = "text-danger", @id = "flag" })
                 </div>
             </div>
         </div>
-    }
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.monitor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.monitor, new { htmlAttributes = new { @id = "monitor", @class = "form-control", ng_model = "laptop.monitor" } })
+                @Html.ValidationMessageFor(model => model.monitor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.cpu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cpu, new { htmlAttributes = new { @id = "cpu", @class = "form-control", ng_model = "laptop.cpu" } })
+                @Html.ValidationMessageFor(model => model.cpu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gpu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.gpu, new { htmlAttributes = new { @id = "gpu", @class = "form-control", ng_model = "laptop.gpu" } })
+                @Html.ValidationMessageFor(model => model.gpu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ssd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ssd, new { htmlAttributes = new { @id = "ssd", @class = "form-control", ng_model = "laptop.ssd" } })
+                @Html.ValidationMessageFor(model => model.ssd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ram, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ram, new { htmlAttributes = new { @id = "ram", @class = "form-control", ng_model = "laptop.ram" } })
+                @Html.ValidationMessageFor(model => model.ram, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.os, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.os, new { htmlAttributes = new { @id = "os", @class = "form-control", ng_model = "laptop.os" } })
+                @Html.ValidationMessageFor(model => model.os, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.weight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.weight, new { htmlAttributes = new { @id = "weight", @class = "form-control", ng_model = "laptop.weight" } })
+                @Html.ValidationMessageFor(model => model.weight, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.battery, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.battery, new { htmlAttributes = new { @id = "battery", @class = "form-control", ng_model = "laptop.battery" } })
+                @Html.ValidationMessageFor(model => model.battery, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" ng-click="CreateLaptop()" />
+            </div>
+        </div>
+    </div>
+    
 
     
 </div>
+<script src="~/Content/js/admin-laptop.js"></script>

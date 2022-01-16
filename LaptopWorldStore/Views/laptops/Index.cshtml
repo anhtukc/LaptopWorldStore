@@ -1,21 +1,23 @@
 ﻿@model IPagedList<LaptopWorldStore.Models.product>
-
+@using LaptopWorldStore.Controllers;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using PagedList;
 @using PagedList.Mvc;
-
-
-
+@{ 
+    var orderString = ViewBag.order;
+}
 <div class="main-content">
+   
     <div class="flexrow sorter">
-        <h4 class="tittle">Sắp xếp: </h4>
-        <button class="sortbutton">Giá giảm dần</button>
-        <button class="sortbutton">Giá tăng dần</button>
+        <h3 class="tittle">Sắp xếp: </h3>
+        <button class="sortbutton"><a href="@Url.Action("Index", "laptops",new { page = 1, order = "des"})" style="color: rgb(9, 151, 151);">Giá giảm dần</a> </button>
+        <button class="sortbutton" ><a href="@Url.Action("Index", "laptops",new { page = 1, order = "asc"})" style="color: rgb(9, 151, 151);">Giá tăng dần</a> </button>
     </div>
     <div id="productshows" class="col-12 flexrow wrap ">
+
         @foreach (var item in Model)
         {
             <section class="productbox col-2 col-s-6 ">
@@ -29,12 +31,18 @@
 
 
         }
+
+
     </div>
     <div class="col-2 marginauto">
-        @Html.PagedListPager(Model, page => Url.Action("Index", "laptops", new { page }),
+        @Html.PagedListPager(Model, page => Url.Action("Index", "laptops", new
+        {
+            page,
+            order = orderString
+   }),
                                                                                  new PagedListRenderOptions
-                                                                                      {
-                                                                                    ContainerDivClasses = new string[] { "page-item" }
+                                                                                 {
+                                                                                     ContainerDivClasses = new string[] { "page-item" }
                                                                                  })
     </div>
 </div>

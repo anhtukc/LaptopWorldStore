@@ -55,7 +55,15 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
             return View(product);
         }
 
-        // GET: Admin/products/Create
+        public string Upload(HttpPostedFileBase picture, string link)
+        {
+            var filename = Path.GetFileName(picture.FileName);
+            var url = "~/Content/images/product/" + link;
+            var dicrectiontosave = Server.MapPath(Url.Content(url));
+            var pathtosave = Path.Combine(dicrectiontosave, filename);
+            picture.SaveAs(pathtosave);
+            return link+filename;
+        }
         public ActionResult Create()
         {
             ViewBag.category_id = new SelectList(db.categories, "category_id", "category_name", db.categories.First());

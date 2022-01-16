@@ -47,12 +47,7 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
             }
             return View(sellbill);
         }
-        [HttpGet]
-        public JsonResult GetAllProduct()
-        {
-            var list = db.products.Select(pd => new { pd.product_id, pd.product_name, pd.quantity, pd.price }).ToList();
-            return Json(list, JsonRequestBehavior.AllowGet);
-        }
+        
         // GET: Admin/sellbills/Create
         public ActionResult Create()
         {
@@ -63,6 +58,12 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
         // POST: Admin/sellbills/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpGet]
+        public JsonResult GetAllProduct()
+        {
+            var list = db.products.Select(pd => new { pd.product_id, pd.product_name, pd.quantity, pd.price }).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public void CheckCustomerInfo(customer _ct)
         {

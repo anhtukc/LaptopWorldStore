@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
 using LaptopWorldStore.Models;
-
+using System.Data.Entity.Migrations;
 namespace LaptopWorldStore.Areas.Admin.Controllers
 {
     public class laptopsController : Controller
@@ -18,24 +18,18 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
 
         public JsonResult GetLaptop(string id)
         {
-            var laptop = db.products.Select(pd=> new{
-                pd.product_id,
-                pd.product_name,
-                pd.provider.provider_id,
-                pd.quantity,
-                pd.picture,
-                pd.price,
-                pd.decription,
-                pd.laptops.FirstOrDefault().cpu,
-                pd.laptops.FirstOrDefault().gpu,
-                pd.laptops.FirstOrDefault().ram,
-                pd.laptops.FirstOrDefault().ssd,
-                pd.laptops.FirstOrDefault().battery,
-                pd.laptops.FirstOrDefault().monitor,
-                pd.laptops.FirstOrDefault().os,
-                pd.laptops.FirstOrDefault().weight
-            }).Where(pd=>pd.product_id == id);
-            return Json(laptop, JsonRequestBehavior.AllowGet);
+            var pd = db.products.Select(p => new {
+                p.product_id,
+                p.product_name,
+                p.provider.provider_id,
+                p.quantity,
+                p.picture,
+                p.price,
+                p.decription
+            }).Where(p => p.product_id == id).FirstOrDefault();
+            var laptop = db.laptops.Where(p => p.product_id == id).FirstOrDefault();
+          
+            return Json(new { Product = pd, Laptop = laptop }, JsonRequestBehavior.AllowGet);
         }
        
         public ActionResult Details(string id)
@@ -44,7 +38,7 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            laptop laptop = db.laptops.Find(id);
+            laptop laptop = db.laptops.Where(l => l.product_id == id).FirstOrDefault();
             if (laptop == null)
             {
                 return HttpNotFound();
@@ -55,6 +49,7 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
         // GET: Admin/laptops/Create
         public ActionResult Create()
         {
+            ViewBag.provider_id = new SelectList(db.providers, "provider_id", "provider_name", db.providers.First());
             ViewBag.product_id = new SelectList(db.products, "product_id", "category_id");
             return View();
         }
@@ -69,7 +64,7 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
             pd.laptops.Add(lt);
             db.products.Add(pd);
             db.SaveChanges();
-            return "CreateSuccessful";
+            return "Thêm thành công ";
         }
 
         // GET: Admin/laptops/Edit/5
@@ -79,12 +74,13 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            laptop laptop = db.laptops.Find(id);
+            laptop laptop = db.laptops.Where(lt=>lt.product_id == id).FirstOrDefault();
             if (laptop == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.product_id = new SelectList(db.products, "product_id", "category_id", laptop.product_id);
+            ViewBag.provider_id = new SelectList(db.providers, "provider_id", "provider_name", db.providers.First());
+
             return View(laptop);
         }
 
@@ -94,12 +90,11 @@ namespace LaptopWorldStore.Areas.Admin.Controllers
         [HttpPost]
         public string EditLaptop(product pd,  laptop lt)
         {
-            var product_found = db.products.Find(pd.product_id);
-            db.laptops.Remove(product_found.laptops.FirstOrDefault());
-            pd.laptops.Add(lt);
-            product_found = pd;
+            lt.product_id = pd.product_id;
+            db.products.AddOrUpdate(pd);
+            db.laptops.AddOrUpdate(lt);
             db.SaveChanges();
-            return "EditSuccessful";
+            return "Sửa thành công";
         }
 
        

@@ -10,7 +10,9 @@
     <script src="~/Content/js/shoppingbag.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/ng-file-upload.min.js"></script>
     <script src="~/Content/js/app.js"></script>
+    <script src="~/Content/js/searchproduct.js"></script>
     <script src="~/Content/js/CrudService.js"></script>
 </head>
 <body  ng-app="app">
@@ -62,12 +64,15 @@
                 <div><a class="hidelaptop navlink" id="" href="singinpage.html">Đăng nhập</a></div>
             </div>
 
-            <form action="" id="searchinputandbutton" class="searchform nav-item   col-s-12">
-                <input type="search nav-item" name="" id="">
-                <button class="submitbtn" type="submit">
+            <span id="searchinputandbutton" class="searchform nav-item   col-s-12" ng-controller="searchpd">
+                <input type="search" list="productname" name="" id="" ng-model="searchstring" ng-change="Log()">
+                <datalist id="productname">
+                    <option ng-repeat="item in Details track by $index" label="{{item.product_id}}">{{item.product_name}}</option>
+                </datalist>
+                <button class="submitbtn" ng-click="Search()">
                     <img src="/Content/images/searchicon.png" />
                 </button>
-            </form>
+            </span>
 
             <i id="closesearchbutton" class="fa fa-close w3-xlarge xsearch"></i>
 

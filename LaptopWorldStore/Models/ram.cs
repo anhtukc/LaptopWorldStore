@@ -15,7 +15,7 @@
         [Key]
         [Column(Order = 0)]
         [StringLength(50)]
-        [Display(Name = "Loại ram")]
+        [Display(Name = "module")]
         public string form_factor { get; set; }
 
         [Key]
@@ -33,6 +33,7 @@
         [Key]
         [Column(Order = 3)]
         [StringLength(50)]
+        [Display(Name = "Công nghệ ram")]
         public string memory_technology { get; set; }
 
         public virtual product product { get; set; }

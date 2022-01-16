@@ -1,36 +1,38 @@
-﻿ @model LaptopWorldStore.Models.sellbill
+﻿@model LaptopWorldStore.Models.sellbill
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";}
 <style>
-    .product-create{
+    .product-create {
         border: 1px solid gray;
-        margin-top:1rem;
+        margin-top: 1rem;
         padding: 0.6rem;
-
     }
-    .input-product{
-        display:inline-block;
+
+    .input-product {
+        display: inline-block;
         min-width: 70%;
         margin: 0.2rem;
     }
-    .customer label{
+
+    .customer label {
         min-width: 8.5%;
     }
-   
+
     #name, #phonenumber {
         display: inline-block;
         min-width: 70%;
     }
+
     #address {
         display: inline-block;
         min-width: 98%;
     }
+
     .label-product {
         width: 13%;
     }
-    
 </style>
 <h4 class="page-title">Create</h4>
 
@@ -42,23 +44,23 @@
             <div class="flex customer col-6">
                 <label for="total" class="col-2">Họ tên:</label>
                 <div class="col-10">
-                    <input type="text" id="name" ng-model="user.name"/>
+                    <input type="text" id="name" ng-model="user.name" />
                 </div>
 
             </div>
             <div class="flex customer col-6">
-                <label for="total"  class="col-4">Số điện thoại:</label>
+                <label for="total" class="col-4">Số điện thoại:</label>
                 <div class="col-8">
-                    <input type="text" id="phonenumber" ng-model="user.phonenumber"/>
+                    <input type="text" id="phonenumber" ng-model="user.phonenumber" />
                 </div>
 
             </div>
 
         </div>
         <div class="form-group flex customer">
-            <label for="total"  class="col-1">Địa chỉ:</label>
+            <label for="total" class="col-1">Địa chỉ:</label>
             <div class="col-10">
-                <input type="text" id="address"  ng-model="user.address"/>
+                <input type="text" id="address" ng-model="user.address" />
             </div>
 
         </div>
@@ -78,7 +80,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="product-create">
         <div class="form-group">
             <label class="label-product">Mã sản phẩm: </label>
@@ -96,18 +98,18 @@
             <label class="label-product">Đơn giá:</label>
             <input type="number" ng-model="price" disabled />
         </div>
-        
-            <div class="form-group">
-                <label class="label-product">Số lượng còn:</label>
-                <input type="number" ng-model="remaining_quantity" disabled />
-            </div>
-            <div class="form-group">
-                <label class="label-product">Số lượng mua:</label>
-                <input type="number" ng-model="quantity"/>
-            </div>
-       <div class="form-group">
-           <button class="btn btn-primary" ng-click="AddBillDetails()">Thêm</button>
-       </div>
+
+        <div class="form-group">
+            <label class="label-product">Số lượng còn:</label>
+            <input type="number" ng-model="remaining_quantity" disabled />
+        </div>
+        <div class="form-group">
+            <label class="label-product">Số lượng mua:</label>
+            <input type="number" ng-model="quantity" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="AddBillDetails()">Thêm</button>
+        </div>
         <table class="table">
             <thead class="thead-dark">
                 <tr>

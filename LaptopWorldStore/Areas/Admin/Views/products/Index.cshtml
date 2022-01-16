@@ -82,8 +82,8 @@
                         @Html.DisplayFor(modelItem => item.flag)
                     </td>
                     <td>
-                        @Html.ActionLink(" ", "Edit", new { id = item.product_id }, new { @Class = "text-primary far fa-edit table-button" })
-                        @Html.ActionLink(" ", "Details", new { id = item.product_id }, new { @Class = "gray fas fa-info-circle table-button" })
+                        @Html.ActionLink(" ", "Edit", item.category_id + "s", new { id = item.product_id }, new { @Class = "text-primary far fa-edit table-button" })
+                        @Html.ActionLink(" ", "Details",item.category_id+"s", new { id = item.product_id }, new { @Class = "gray fas fa-info-circle table-button" })
                         <a class="text-danger far fa-trash-alt table-button" ng-click="DeleteProduct('@item.product_id')"></a>
                     </td>
                 </tr>

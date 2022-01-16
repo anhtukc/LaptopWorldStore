@@ -1,0 +1,113 @@
+﻿@model LaptopWorldStore.Models.ram
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class = "page-title">Edit</h4>
+
+<div class="form-edit" ng-controller="admin-ram">
+    <div class="form-horizontal" ng-init="GetInfo('@Model.product_id', '@Model.product.picture')">
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.product_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.product_name, new { htmlAttributes = new { @class = "form-control", @id = "product_name", ng_model = "product.product_name" } })
+                @Html.ValidationMessageFor(model => model.product.product_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                @Html.LabelFor(model => model.product.provider_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-9">
+                @Html.DropDownList("provider_id", null, htmlAttributes: new { @class = "form-control", @id = "provider_id", ng_model = "product.provider_id" })
+                @Html.ValidationMessageFor(model => model.product.provider_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.picture, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="picture" id="image-file" ngf-select="uploadFiles($file)" />
+                <img src="~/Content/images/product/@Model.product.picture" class="col-3"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.price, new { htmlAttributes = new { @class = "form-control", @id = "price", ng_model = "product.price" } })
+                @Html.ValidationMessageFor(model => model.product.price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.quantity, new { htmlAttributes = new { @class = "form-control", @id = "quantity", ng_model = "product.quantity" } })
+                @Html.ValidationMessageFor(model => model.product.quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.decription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.decription, new { htmlAttributes = new { @class = "form-control", @id = "decription", ng_model = "product.decription" } })
+                @Html.ValidationMessageFor(model => model.product.decription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.flag, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.product.flag, new { htmlAttributes = new { @class = "form-control col-1", @id = "flag", ng_model = "product.flag" } })
+                    @Html.ValidationMessageFor(model => model.product.flag, "", new { @class = "text-danger", @id = "flag" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.form_factor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.form_factor, new { htmlAttributes = new { @class = "form-control", @id = "form_factor", ng_model = "ram.form_factor" } })
+                @Html.ValidationMessageFor(model => model.form_factor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.speed, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.speed, new { htmlAttributes = new { @class = "form-control", @id = "speed", ng_model = "ram.speed" } })
+                @Html.ValidationMessageFor(model => model.speed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.size, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.size, new { htmlAttributes = new { @class = "form-control", @id = "size", ng_model = "ram.size" } })
+                @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.memory_technology, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.memory_technology, new { htmlAttributes = new { @class = "form-control", @id = "memory_technology", ng_model = "ram.memory_technology" } })
+                @Html.ValidationMessageFor(model => model.memory_technology, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu thay đổi" class="btn btn-primary" ng-click="Edit()" />
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Content/js/admin-ram.js"></script>

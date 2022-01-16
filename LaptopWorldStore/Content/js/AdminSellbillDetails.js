@@ -248,7 +248,8 @@
                 'list': $scope.Details
             }
         }).then(function (res) {
-            console.log(res.data);
+            alert(res.data);
+            $scope.GetProduct();
         })
     }
     $scope.GetProduct();

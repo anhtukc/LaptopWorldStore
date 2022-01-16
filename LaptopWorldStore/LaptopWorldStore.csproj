@@ -141,13 +141,16 @@
     <Compile Include="Areas\Admin\Controllers\laptopsController.cs" />
     <Compile Include="Areas\Admin\Controllers\productsController.cs" />
     <Compile Include="Areas\Admin\Controllers\providersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ramsController.cs" />
     <Compile Include="Areas\Admin\Controllers\receiptbillsController.cs" />
     <Compile Include="Areas\Admin\Controllers\sellbillsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ssdsController.cs" />
     <Compile Include="Controllers\accountsController.cs" />
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Controllers\laptopsController.cs" />
     <Compile Include="Controllers\productsController.cs" />
     <Compile Include="Controllers\ramsController.cs" />
+    <Compile Include="Controllers\searchPageController.cs" />
     <Compile Include="Controllers\ShoppingBagController.cs" />
     <Compile Include="Controllers\ssdsController.cs" />
     <Compile Include="Controllers\_newController.cs" />
@@ -177,7 +180,10 @@
     <Content Include="Content\css\bill.css" />
     <Content Include="Content\css\news-page.css" />
     <Content Include="Content\images\searchicon.png" />
+    <Content Include="Content\js\admin-laptop.js" />
     <Content Include="Content\js\admin-product.js" />
+    <Content Include="Content\js\admin-ram.js" />
+    <Content Include="Content\js\admin-ssd.js" />
     <Content Include="Content\js\AdminSellbillDetails.js" />
     <Content Include="Content\js\angular.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -245,10 +251,12 @@
     <Content Include="Content\js\adminReceiptBill.js" />
     <Content Include="Content\js\laptoppage.js" />
     <Content Include="Content\js\menu.js" />
+    <Content Include="Content\js\searchproduct.js" />
     <Content Include="Content\js\userproduct.js" />
     <Content Include="Content\js\shoppingbag.js" />
     <Content Include="Content\js\thumbnail.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\result\timeexecutes.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -327,14 +335,23 @@
     <Content Include="Areas\Admin\Views\sellbills\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\sellbills\Index.cshtml" />
     <Content Include="Areas\Admin\Views\laptops\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\laptops\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\laptops\Details.cshtml" />
     <Content Include="Areas\Admin\Views\laptops\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\receiptbills\Create.cshtml" />
     <Content Include="Areas\Admin\Views\receiptbills\Details.cshtml" />
     <Content Include="Areas\Admin\Views\receiptbills\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\receiptbills\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ssds\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ssds\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ssds\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\rams\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\rams\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\rams\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\FileAPI.flash.swf" />
+    <Content Include="Scripts\FileAPI.js" />
+    <Content Include="Scripts\FileAPI.min.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
     <Content Include="Scripts\i18n\angular-locale_af.js" />
@@ -1083,6 +1100,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ng-file-upload-all.js" />
+    <Content Include="Scripts\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\ng-file-upload-shim.js" />
+    <Content Include="Scripts\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\ng-file-upload.js" />
+    <Content Include="Scripts\ng-file-upload.min.js" />
     <Content Include="Scripts\sitemap.xml" />
     <Content Include="Scripts\test-bundles\angular-aria.js" />
     <Content Include="Scripts\test-bundles\angular-cookies.js" />
@@ -1109,6 +1132,7 @@
     <Content Include="Views\_new\Details.cshtml" />
     <Content Include="Views\_new\Index.cshtml" />
     <Content Include="Views\ShoppingBag\Index.cshtml" />
+    <Content Include="Views\searchPage\Index.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

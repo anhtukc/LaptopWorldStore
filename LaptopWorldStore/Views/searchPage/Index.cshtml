@@ -1,0 +1,27 @@
+﻿@model IEnumerable<LaptopWorldStore.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="main-content">
+    <div id="productshows" class="col-12 flexrow wrap ">
+        @foreach (var item in Model)
+        {
+            <section class="productbox col-2 col-s-6 ">
+                <a href='@Url.Action("Details", item.category_id +"s", new { id = item.product_id })'>
+                    <img src="@Url.Content("~/Content/images/product/" + item.picture)" height="120" class="col-12" />
+                </a>
+                <small>ID: @item.product_id</small>
+                <h4 class="productname"> @Html.ActionLink(@item.product_name, "Details", item.category_id + "s", new { id = item.product_id }, null)</h4>
+                <p>Giá: <span class="productprice">@string.Format("{0: ###,###,###,000}", @item.price) đ</span></p>
+            </section>
+
+
+        }
+    </div>
+
+</div>
+<link href="~/Content/css/productpage.css" rel="stylesheet" />

@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
 using LaptopWorldStore.Models;
+using System.Diagnostics;
+using System.IO;
 
 namespace LaptopWorldStore.Controllers
 {
@@ -16,22 +18,29 @@ namespace LaptopWorldStore.Controllers
     {
         private LaptopWorld db = new LaptopWorld();
 
-        // GET: laptops
-        public ActionResult Index(int page = 1)
+        
+        public ActionResult Index(int page = 1, string order = "asc")
         {
-            var laptops = db.products.Include(l => l.category).Where(l => l.category.category_id == "laptop");
-            return View(laptops.ToList().ToPagedList(page, 10));
+            ViewBag.order = order;
+            if (order == "asc")
+            {
+                var laptops = db.products.Include(l => l.category).Where(l => l.category.category_id == "laptop").ToList().OrderBy(p => p.price);
+                return View(laptops.ToPagedList(page, 10));
+            }
+            else
+            {
+                var laptops = db.products.Include(l => l.category).Where(l => l.category.category_id == "laptop").ToList().OrderByDescending(p => p.price);
+                return View(laptops.ToPagedList(page, 10));
+            }
         }
 
-         
-  
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            laptop laptop = db.laptops.First(l =>l.product_id == id);
+            laptop laptop = db.laptops.Where(l =>l.product_id == id).FirstOrDefault();
             if (laptop == null)
             {
                 return HttpNotFound();

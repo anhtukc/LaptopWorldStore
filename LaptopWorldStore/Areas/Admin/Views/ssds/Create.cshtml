@@ -1,0 +1,121 @@
+﻿@model LaptopWorldStore.Models.ssd
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="page-title">Create</h4>
+
+<div class="form-create" ng-controller="admin-ssd">
+   
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.product_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.product_id, new { htmlAttributes = new { @class = "form-control", @id = "product_id", ng_model = "product.product_id" } })
+                @Html.ValidationMessageFor(model => model.product.product_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.product_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.product_name, new { htmlAttributes = new { @class = "form-control", @id = "product_name", ng_model = "product.product_name" } })
+                @Html.ValidationMessageFor(model => model.product.product_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                @Html.LabelFor(model => model.product.provider_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-9">
+                @Html.DropDownList("provider_id", null, htmlAttributes: new { @class = "form-control", @id = "provider_id", ng_model = "product.provider_id" })
+                @Html.ValidationMessageFor(model => model.product.provider_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.picture, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="picture" id="image-file" ngf-select="uploadFiles($file)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.price, new { htmlAttributes = new { @class = "form-control", @id = "price", ng_model = "product.price" } })
+                @Html.ValidationMessageFor(model => model.product.price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.quantity, new { htmlAttributes = new { @class = "form-control", @id = "quantity", ng_model = "product.quantity" } })
+                @Html.ValidationMessageFor(model => model.product.quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.decription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product.decription, new { htmlAttributes = new { @class = "form-control", @id = "decription", ng_model = "product.decription" } })
+                @Html.ValidationMessageFor(model => model.product.decription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.product.flag, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.product.flag, new { htmlAttributes = new { @class = "form-control col-1", @id = "flag", ng_model = "product.flag" } })
+                    @Html.ValidationMessageFor(model => model.product.flag, "", new { @class = "text-danger", @id = "flag" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.write_speed, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.write_speed, new { htmlAttributes = new { @class = "form-control", @id = "write_speed", ng_model = "ssd.write_speed" } })
+                @Html.ValidationMessageFor(model => model.write_speed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.read_speed, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.read_speed, new { htmlAttributes = new { @class = "form-control", @id = "read_speed", ng_model = "ssd.read_speed" } })
+                @Html.ValidationMessageFor(model => model.read_speed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.size, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.size, new { htmlAttributes = new { @class = "form-control", @id = "size", ng_model = "ssd.size" } })
+                @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.connector, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.connector, new { htmlAttributes = new { @class = "form-control", @id = "connector", ng_model = "ssd.connector" } })
+                @Html.ValidationMessageFor(model => model.connector, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+     
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo" ng-click="Create()" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    
+
+    
+</div>
+<script src="~/Content/js/admin-ssd.js"></script>

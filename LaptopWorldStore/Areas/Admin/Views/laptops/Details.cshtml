@@ -7,23 +7,60 @@
 
 <h4 class="page-title">Details</h4>
 
-<div class="form-edit">
-    <div>
-        
-        <dl class="dl-horizontal">
-                    <dt>
-                @Html.DisplayNameFor(model => model.product.category_id)
-            </dt>
+<div class="col-12 marginauto" >
+    <section>
+        <section class="main-detail col-11 col-s-11 marginauto flex">
+            <div class="col-5 col-s-12  relative">
 
-            <dd>
-                @Html.DisplayFor(model => model.product.category_id)
-            </dd>
+                <img src="@Url.Content("~/Content/images/product/" + Model.product.picture)" class="col-12" />
+            </div>
 
-            </dl>
-    </div>
-    <p style="margin-left: 3rem">
-            @Html.ActionLink("Chỉnh sửa", "Edit", new { /* id = Model.PrimaryKey */ }, new { @class = "btn btn-primary" }) 
-        @Html.ActionLink("Quay lại", "Index", "", new { @class = "btn btn-default" })
-
-        </p>
+            <div class="col-s-9 detailproduct">
+                <h2 class="productname" id="name">@Model.product.product_name</h2>
+                <p>id:<span id="id">@Model.product.product_id</span></p>
+                <table>
+                    <tr>
+                        <td>Màn hình:</td>
+                        <td id="monitor"> @Model.monitor</td>
+                    </tr>
+                    <tr>
+                        <td>CPU:</td>
+                        <td id="cpu">@Model.cpu</td>
+                    </tr>
+                    <tr>
+                        <td>Ram:</td>
+                        <td id="ram">@Model.ram </td>
+                    </tr>
+                    <tr>
+                        <td>GPU:</td>
+                        <td id="gpu">@Model.gpu</td>
+                    </tr>
+                    <tr>
+                        <td>Ổ cứng:</td>
+                        <td id="ssd">@Model.ssd</td>
+                    </tr>
+                    <tr>
+                        <td>Pin:</td>
+                        <td id="battery">@Model.battery Wh</td>
+                    </tr>
+                    <tr>
+                        <td>Cân nặng:</td>
+                        <td id="weight">@Model.weight KG</td>
+                    </tr>
+                    <tr>
+                        <td>Hệ điều hành:</td>
+                        <td id="os">@Model.os</td>
+                    </tr>
+                </table>
+                <p>Giá: <span class="price" id="sellprice">@string.Format("{0: ###,###,###,000}", @Model.product.price) đ</span></p>
+            </div>
+        </section>
+        <section class="col-8 marginauto">
+            <h3>Đánh giá sản phẩm</h3>
+        </section>
+    </section>
 </div>
+<script src="~/Content/js/userproduct.js"></script>
+
+
+<link href="~/Content/css/productdetail.css" rel="stylesheet" />

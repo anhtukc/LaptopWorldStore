@@ -33,11 +33,11 @@ namespace LaptopWorldStore.Controllers
             return View(product);
         }
 
- 
-        public ActionResult Rampage()
+        
+        public JsonResult GetProduct()
         {
-            var products = db.products.Include(p => p.category).Where(p=> p.category_id =="ram");
-            return View(products.ToList());
+            var products = db.products.Select(pd => new { pd.product_id, pd.product_name}).ToList();
+            return Json(products, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Laptoppage()
